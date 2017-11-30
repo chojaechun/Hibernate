@@ -26,7 +26,7 @@
     <bean
         class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
         p:viewClass="org.springframework.web.servlet.view.JstlView"
-        p:prefix="/WEB-INF/jsp/" p:suffix=".jsp">
+        p:prefix="/jsp/" p:suffix=".jsp">
     </bean>
 </beans>
 
