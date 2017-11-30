@@ -6,17 +6,17 @@
 	<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
             SELECT
-                IDX,
-                USERID,
-                TITLE,
-                CONTENT,
-                COUNT,
-                DATE
+                M_BOARDSEQ,
+                M_USERID,
+                M_TITLE,
+                M_CONTENT,
+                M_COUNT,
+                M_DATE
             FROM
-                BOARD
+                M_BOARD
             WHERE
-                DELCHK = 'N'
-            ORDER BY IDX DESC
+                M_DELCHK = 'N'
+            ORDER BY M_BOARDSEQ DESC
         ]]>
 	</select>
 

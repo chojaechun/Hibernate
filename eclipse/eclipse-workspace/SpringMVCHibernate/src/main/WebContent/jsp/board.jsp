@@ -81,11 +81,11 @@ $(document).ready(function(){
 						<% }else{%>
 						<%for(int i= 0; i < boardList.size(); i++){%>
 						<tr style="text-align: left;">
-							<td><%=boardList.get(i).get("IDX") %></td>
-							<td><a data-target="#myModal" data-toggle="modal" href="#myModal" style="color: #FAF4C0;"><%=boardList.get(i).get("TITLE") %></a></td>
-							<td><%=boardList.get(i).get("USERID") %></td>
-							<td><%=boardList.get(i).get("DATE") %></td>
-							<td><%=boardList.get(i).get("COUNT") %></td>
+							<td><%=boardList.get(i).get("M_BOARDSEQ") %></td>
+							<td><a data-target="#myModal" data-toggle="modal" href="#myModal" style="color: #FAF4C0;"><%=boardList.get(i).get("M_TITLE") %></a></td>
+							<td><%=boardList.get(i).get("M_USERID") %></td>
+							<td><%=boardList.get(i).get("M_DATE") %></td>
+							<td><%=boardList.get(i).get("M_COUNT") %></td>
 						</tr>
 						<% } %>
 						<%} %>

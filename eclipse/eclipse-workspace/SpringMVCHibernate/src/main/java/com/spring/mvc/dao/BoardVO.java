@@ -4,57 +4,62 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private int idx;
-	private String userId;
-	private String title;
-	private String content;
-	private int count;
-	private Date date;
+	private int m_boardseq;
+	private String m_userid;
+	private String m_title;
+	private String m_content;
+	private int m_count;
+	private Date m_date;
+	private String m_usernik;
 	
-	public int getIdx() {
-		return idx;
+	public int getM_boardseq() {
+		return m_boardseq;
 	}
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setM_boardseq(int m_boardseq) {
+		this.m_boardseq = m_boardseq;
 	}
-	public String getUserId() {
-		return userId;
+	public String getM_userid() {
+		return m_userid;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setM_userid(String m_userid) {
+		this.m_userid = m_userid;
 	}
-	public String getTitle() {
-		return title;
+	public String getM_title() {
+		return m_title;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setM_title(String m_title) {
+		this.m_title = m_title;
 	}
-	public String getContent() {
-		return content;
+	public String getM_content() {
+		return m_content;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setM_content(String m_content) {
+		this.m_content = m_content;
 	}
-	public int getCount() {
-		return count;
+	public int getM_count() {
+		return m_count;
 	}
-	public void setCount(int count) {
-		this.count = count;
+	public void setM_count(int m_count) {
+		this.m_count = m_count;
 	}
-	public Date getDate() {
-		return date;
+	public Date getM_date() {
+		return m_date;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setM_date(Date m_date) {
+		this.m_date = m_date;
+	}
+	public String getM_usernik() {
+		return m_usernik;
+	}
+	public void setM_usernik(String m_usernik) {
+		this.m_usernik = m_usernik;
 	}
 	
 	@Override
 	public String toString() {
-		return "BoardVO [idx=" + idx + ", userId=" + userId + ", title=" + title + ", content=" + content + ", count="
-				+ count + ", date=" + date + "]";
+		return "BoardVO [m_boardseq=" + m_boardseq + ", m_userid=" + m_userid + ", m_title=" + m_title + ", m_content="
+				+ m_content + ", m_count=" + m_count + ", m_date=" + m_date + ", m_usernik=" + m_usernik + "]";
 	}
-	
-
 	
 }
 
