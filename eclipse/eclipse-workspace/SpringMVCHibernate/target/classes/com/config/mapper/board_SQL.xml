@@ -2,8 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="board">
-
+	<!-- 나중에 23줄에서 관련검색 작성 -->
 	<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
+	SELECT   M_BOARDSEQ,
+             M_USERID,
+             M_TITLE,
+             M_COUNT,
+             M_DATE
+    FROM ( SELECT 	@ROWNUM:=@ROWNUM +1 AS ROW, 
+	    			A.M_BOARDSEQ,
+	                A.M_USERID,
+	                A.M_TITLE,
+	                A.M_COUNT,
+	                A.M_DATE
+		   FROM ( SELECT M_BOARDSEQ,
+			             M_USERID,
+			             M_TITLE,
+			             M_COUNT,
+			             M_DATE 
+		          FROM M_BOARD ORDER BY M_BOARDSEQ DESC) A, 
+		          	   (SELECT @ROWNUM:=0)B)C 
+	 		<![CDATA[		  
+	 			  WHERE C.ROW BETWEEN #{start} AND #{end}
+			]]>		
+		
+	</select>
+
+	<select id="selectBoardContent" parameterType="int" resultType="com.spring.mvc.vo.BoardVO">
         <![CDATA[
             SELECT
                 M_BOARDSEQ,
@@ -16,10 +41,13 @@
                 M_BOARD
             WHERE
                 M_DELCHK = 'N'
-            ORDER BY M_BOARDSEQ DESC
+            AND
+            	M_BOARDSEQ = #{boardSeq}
         ]]>
 	</select>
-
-
+	
+	<select id="getCount" parameterType="map" resultType="Integer">
+		SELECT COUNT(*)	FROM M_BOARD
+	</select>
 </mapper>
 

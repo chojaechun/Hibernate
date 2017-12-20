@@ -1,4 +1,4 @@
-package com.spring.mvc.dao;
+package com.spring.mvc.vo;
 
 import java.util.Date;
 

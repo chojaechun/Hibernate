@@ -1,5 +1,6 @@
 package com.spring.mvc.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.spring.mvc.dao.BoardDAO;
+import com.spring.mvc.vo.BoardVO;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService{
@@ -19,8 +21,18 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO boardDAO;
 	
 	@Override
-	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception {
+	public List<BoardVO> selectBoardList(Map<String, Object> map) throws Exception {
 		return boardDAO.selectBoardList(map);
+	}
+
+	@Override
+	public BoardVO selectBoardContent(int boardSeq) throws Exception {
+		return boardDAO.selectBoardContent(boardSeq);
+	}
+
+	@Override
+	public int getCount(HashMap<String, Object> map) {
+		return boardDAO.getCount(map);
 	}
 
 }

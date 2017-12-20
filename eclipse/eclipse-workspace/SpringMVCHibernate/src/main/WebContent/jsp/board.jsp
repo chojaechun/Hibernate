@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
-<%@page import="com.spring.mvc.dao.BoardVO"%>
+<%@page import="com.spring.mvc.vo.BoardVO"%>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -82,7 +82,7 @@ $(document).ready(function(){
 						<%for(int i= 0; i < boardList.size(); i++){%>
 						<tr style="text-align: left;">
 							<td><%=boardList.get(i).get("M_BOARDSEQ") %></td>
-							<td><a data-target="#myModal" data-toggle="modal" href="#myModal" style="color: #FAF4C0;"><%=boardList.get(i).get("M_TITLE") %></a></td>
+							<td><a data-target="#myModal" data-toggle="modal" href="#myModal" onclick="boardAjax('getBoardContent.do', <%=boardList.get(i).get("M_BOARDSEQ") %>)" style="color: #FAF4C0;"><%=boardList.get(i).get("M_TITLE") %></a></td>
 							<td><%=boardList.get(i).get("M_USERID") %></td>
 							<td><%=boardList.get(i).get("M_DATE") %></td>
 							<td><%=boardList.get(i).get("M_COUNT") %></td>
@@ -103,34 +103,33 @@ $(document).ready(function(){
 						id="nextBtn">Next</a></li>
 				</ul>
 			</div>
-		</div>
-		<div class="container" id ="changeSearch">
-				<!-- 검색어 입력란 -->
-				<div class="col-xs-3" style="float: right;">
-					<div class="input-group">
-						<input type="text" class="form-control" size="10" placeholder="Search Text" required>
-						<div class="input-group-btn">
-							<button type="button" class="btn" style="background-color: #6799FF;color: white;">Search</button>
+			<div class="col-md-12 col-sm-12 container" id ="changeSearch">
+					<!-- 검색어 입력란 -->
+					<div class="col-xs-3" style="float: right;">
+						<div class="input-group">
+							<input type="text" class="form-control" size="10" placeholder="Search Text" required>
+							<div class="input-group-btn">
+								<button type="button" class="btn" style="background-color: #6799FF;color: white;">Search</button>
+							</div>
 						</div>
 					</div>
+					<!-- 검색 콤보 박스 -->
+					<div class="dropup" style="float: right;">
+		
+						<select class="form-control" id="fb_category">
+							<optgroup label="Choice">
+								<option value="ALL">ALL</option>
+								<option value="NAME">Writer</option>
+								<option value="TITLE">Title</option>
+								<option value="CONTENT">Content</option>
+							</optgroup>
+						</select>
+					</div>
+		
+				<!-- 글쓰기 이동 -->
+				<div style="float: left;">
+					<button type="button" class="btn" style="background-color: #6799FF;color: white;">Write</button>
 				</div>
-	
-				<!-- 검색 콤보 박스 -->
-				<div class="dropup" style="float: right;">
-	
-					<select class="form-control" id="fb_category">
-						<optgroup label="Choice">
-							<option value="ALL">ALL</option>
-							<option value="NAME">Writer</option>
-							<option value="TITLE">Title</option>
-							<option value="CONTENT">Content</option>
-						</optgroup>
-					</select>
-				</div>
-	
-			<!-- 글쓰기 이동 -->
-			<div style="float: left;">
-				<button type="button" class="btn" style="background-color: #6799FF;color: white;">Write</button>
 			</div>
 		</div>
 	</div>
@@ -180,12 +179,12 @@ $(document).ready(function(){
 		<div class="modal-body" style="padding:20px 50px;">
 			<form role="form">
 				<div class="form-group">
-					<label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-					<input type="text" class="form-control" id="usrname" placeholder="Enter email">
+					<label for="usrname"><span class="glyphicon glyphicon-user"></span> Title</label>
+					<input type="text" class="form-control" id="m_usrname" placeholder="Enter Title">
 				</div>
 				<div class="form-group">
-					<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-					<input type="text" class="form-control" id="psw" placeholder="Enter password">
+					<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Content</label>
+					<textarea class="form-control" id="m_content" rows="8" placeholder="Enter Content" ></textarea>
 				</div>
 			</form>
         </div>
