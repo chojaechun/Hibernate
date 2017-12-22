@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <link type="text/css" rel="stylesheet" href="../assets/plugins/css/bootstrap/css/bootstrap.min.css" >
-<script	type="text/javascript"	src="../assets/plugins/jquery/1.11.0/jquery.min.js"></script>
-<script	type="text/javascript"	src="../assets/plugins/css/bootstrap/js/bootstrap.min.js"></script>
+<script	type="text/javascript" src="../assets/plugins/jquery/1.11.0/jquery.min.js"></script>
+<script	type="text/javascript" src="../assets/plugins/css/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/home.js"></script>
 <head>
 <meta charset="utf-8">
@@ -15,6 +15,7 @@
       font: 20px Montserrat, sans-serif;
       line-height: 1.8;
       color: #f5f6f7;
+      padding-right: 0 !important;
   }
   p {font-size: 16px;}
   .margin {margin-bottom: 45px;}
@@ -57,14 +58,14 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-default">
-  <div class="container">
+  <div style="width: 90%;float: left;">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">JOJAE</a>
+      <a class="navbar-brand" style="margin-left: 20px" href="#">JOJAE</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -74,38 +75,43 @@
       </ul>
     </div>
   </div>
+	<div style="float: right;margin-right: 20px">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a style="cursor: pointer;">Login</a></li>
+		</ul>
+  </div>
 </nav>
 
 <!-- First Container -->
 <div class="container-fluid text-center" style="background-color: #EAEAEA;" id ="mainContainer">
   <h3 class="margin">Main Title Page</h3>
-  <img src="" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
+  <img src="../assets/img/bird.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
   
   <h3>Server : AWS<br>Front : JSP, JAVA SCRIPT<br>Back : Spring Framework MVC, Hibernate<br>DB : MY SQL</h3>
 </div>
 
 <!-- Second Container -->
 <div class="container-fluid bg-3 text-center" id ="secondContainer">
-	<div>
-		<div style="margin-right:30px;float: right;">Etc</div> 
-		<div style="margin-right:30px;float: right;">SQL</div> 
-		<div style="margin-right:30px;float: right;">JAVA Script</div>
-		<div style="margin-right:30px;float: right;">JAVA</div>
+	<div id ='default_layout_hidden' style="display: none;">
+		<div style="margin-right:30px;float: right;" id ='%SubID_1%'>
+			<a onclick="subPage('%ID_1%')" style="cursor: pointer;">%ID_2%</a>
+		</div>
 	</div>
+	<div id ='sub_layout_view'></div>
+	
   <h3 class="margin" style="margin-top: 80px">Sub Title Page</h3><br>
-  <div class="row"> 상단 CATEGORY ( JAVASCRIPT JAVA SQL 등등..)
+  <div class="row">
     <div class="col-sm-4">
-    	해당 카테고리 정보에 맞는 DIV 리스트 설정 ( 선택시 MODAL 로 VIEW )
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="" class="img-responsive margin" style="width:100%" alt="Image">
+      <img src="../assets/img/birds1.jpg" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
     <div class="col-sm-4"> 
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="" class="img-responsive margin" style="width:100%" alt="Image">
+      <img src="../assets/img/birds2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
     <div class="col-sm-4"> 
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="" class="img-responsive margin" style="width:100%" alt="Image">
+      <img src="../assets/img/birds3.jpg" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
   </div>
 </div>
@@ -113,7 +119,7 @@
 <!-- Third Container (Grid) -->
 <div class="container-fluid bg-2 text-center"  id="thirdContainer">
 	<div style="width: 80%;margin:auto">
-		<jsp:include page="/board/boardList.do" flush="true" />
+		<jsp:include page="/jsp/board.jsp" flush="true" />
 	</div>	
 </div>
 

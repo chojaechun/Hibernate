@@ -30,7 +30,7 @@ public class BoardController {
     @Resource(name="boardService")
     private BoardService boardService;
 
-    @RequestMapping(value="/board/boardList.do")
+    @RequestMapping(value="/board/mainPage.do")
     public ModelAndView boardMain(Map<String,Object> commandMap, 
     		@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyField", defaultValue = "") String keyField,
@@ -49,7 +49,7 @@ public class BoardController {
 		int count = this.boardService.getCount(map);
 		
 		Paging page = new Paging(keyField, keyWord, currentPage, count,
-				this.pageSize, this.blockCount, "boardList.do");
+				this.pageSize, this.blockCount, "mainPage.do");
 		
 		pagingHtml = page.getPagingHtml().toString();
 
@@ -66,7 +66,7 @@ public class BoardController {
 		}
 		int number = count - (currentPage - 1) * this.pageSize;
 		
-		ModelAndView mv = new ModelAndView("/board");
+		ModelAndView mv = new ModelAndView("/home");
 		mv.addObject("count", Integer.valueOf(count));
 		mv.addObject("currentPage", Integer.valueOf(currentPage));
 		mv.addObject("boardList", list);

@@ -48,54 +48,54 @@ public class Paging {
 
 		if (currentPage > blockPage) {
 			if (keyWord == null) {
-				this.pagingHtml.append("<a href=" + pageUrl + "?pageNum="
+				this.pagingHtml.append("<li><a href=" + pageUrl + "?pageNum="
 						+ (startPage - 1) + addKey + ">");
 			} else {
-				this.pagingHtml.append("<a href=" + pageUrl + "?keyField="
+				this.pagingHtml.append("<li><a href=" + pageUrl + "?keyField="
 						+ keyField + "&keyWord=" + keyWord + "&pageNum="
-						+ (startPage - 1) + addKey + " style='text-decoration: none;'>");
+						+ (startPage - 1) + addKey + "#thirdContainer"+" style='text-decoration: none;'>");
 			}
 			this.pagingHtml.append("<font size='2'><</font>");
-			this.pagingHtml.append("</a>");
+			this.pagingHtml.append("</a></li>");
 		}
 		
-		this.pagingHtml.append("&nbsp;&nbsp;");
+		//this.pagingHtml.append("&nbsp;&nbsp;");
 		for (int i = startPage; i <= endPage; i++) {
 			if (i > totalPage) {
 				break;
 			}
 			if (i == currentPage) {
-				this.pagingHtml.append("&nbsp;<b> <font color='red'>");
+				this.pagingHtml.append("<li><a href='#thirdContainer'><b> <font color='red'>");
 				this.pagingHtml.append(i);
-				this.pagingHtml.append("</font></b>");
+				this.pagingHtml.append("</font></b></a></li>");
 			} else {
 				if (keyWord == null) {
-					this.pagingHtml.append("&nbsp;<a href='" + pageUrl
+					this.pagingHtml.append("<li><a href='" + pageUrl
 							+ "?pageNum=");
 				} else {
-					this.pagingHtml.append("&nbsp;<a href='" + pageUrl
+					this.pagingHtml.append("<li><a href='" + pageUrl
 							+ "?keyField=" + keyField + "&keyWord=" + keyWord
 							+ "&pageNum=");
 				}
 				this.pagingHtml.append(i);
-				this.pagingHtml.append(addKey + "'style='text-decoration: none; font-size:12px;'>");
+				this.pagingHtml.append(addKey + "#thirdContainer'style='text-decoration: none;'>");
 				this.pagingHtml.append(i);
-				this.pagingHtml.append("</a>");
+				this.pagingHtml.append("</a></li>");
 			}
-			this.pagingHtml.append("&nbsp;");
+			//this.pagingHtml.append("&nbsp;");
 		}
-		this.pagingHtml.append("&nbsp;&nbsp;&nbsp;&nbsp;");
+		//this.pagingHtml.append("&nbsp;&nbsp;&nbsp;&nbsp;");
 		if (totalPage - startPage >= blockPage) {
 			if (keyWord == null) {
-				this.pagingHtml.append("<a href=" + pageUrl + "?pageNum="
+				this.pagingHtml.append("<li><a href=" + pageUrl + "?pageNum="
 						+ (endPage + 1) + addKey + ">");
 			} else {
-				this.pagingHtml.append("<a href=" + pageUrl + "?keyField="
+				this.pagingHtml.append("<li><a href=" + pageUrl + "?keyField="
 						+ keyField + "&keyWord=" + keyWord + "&pageNum="
-						+ (endPage + 1) + addKey +" style='text-decoration: none;'>");
+						+ (endPage + 1) + addKey +"#thirdContainer"+" style='text-decoration: none;'>");
 			}
 			this.pagingHtml.append("<font size='2'>></font>");
-			this.pagingHtml.append("</a>");
+			this.pagingHtml.append("</a></li>");
 		}
 		
 	}

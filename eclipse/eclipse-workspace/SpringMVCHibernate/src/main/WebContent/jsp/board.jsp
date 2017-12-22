@@ -40,6 +40,7 @@
   .modal-footer {
       background-color: #f9f9f9;
   }
+  
 
 </style>
 
@@ -54,82 +55,78 @@ $(document).ready(function(){
 </script>
   
 <body>
-	
-	<div class="container-fluid body-style">
-		<div id="changeFBTableList">
-			<h3 class="text-left">Board</h3>
-	
-			<div class="col-sm-12">&nbsp;</div>
-			<!-- 게시판 리스트 출력 -->
-			<table class="table table-hover">
-				<thead>
+	<div id="changeFBTableList">
+		<h3 class="text-left">Board</h3>
+
+		<div class="col-sm-12">&nbsp;</div>
+		<!-- 게시판 리스트 출력 -->
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th width="100px">No</th>
+					<th width="500px">Title</th>
+					<th width="200px">Writer</th>
+					<th width="150px">Regdate</th>
+					<th width="50px">hit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% List<Map<String,Object>> boardList = (List)request.getAttribute("boardList"); %>
+				
+					<%if(boardList == null){%>
 					<tr>
-						<th width="100px">No</th>
-						<th width="500px">Title</th>
-						<th width="200px">Writer</th>
-						<th width="150px">Regdate</th>
-						<th width="50px">hit</th>
+						<td colspan="5">등록된 글이 없습니다.</td>
 					</tr>
-				</thead>
-				<tbody>
-					<% List<Map<String,Object>> boardList = (List)request.getAttribute("boardList"); %>
-					
-						<%if(boardList == null){%>
-						<tr>
-							<td colspan="5">등록된 글이 없습니다.</td>
-						</tr>
-						<% }else{%>
-						<%for(int i= 0; i < boardList.size(); i++){%>
-						<tr style="text-align: left;">
-							<td><%=boardList.get(i).get("M_BOARDSEQ") %></td>
-							<td><a data-target="#myModal" data-toggle="modal" href="#myModal" onclick="boardAjax('getBoardContent.do', <%=boardList.get(i).get("M_BOARDSEQ") %>)" style="color: #FAF4C0;"><%=boardList.get(i).get("M_TITLE") %></a></td>
-							<td><%=boardList.get(i).get("M_USERID") %></td>
-							<td><%=boardList.get(i).get("M_DATE") %></td>
-							<td><%=boardList.get(i).get("M_COUNT") %></td>
-						</tr>
-						<% } %>
-						<%} %>
-				</tbody>
-			</table>
-			<!-- 게시판 끝 -->
-			<!-- 페이지 넘김 처리! -->
-			<div align="center">
-				<ul class="pagination" style="margin: center;">
-					<li><a href="javascript:fprevPage('', '', '')"
-						id="preBtn">Prev</a></li>
-	
-					<li><a
-						href="javascript:fnextPage('', '', '')"
-						id="nextBtn">Next</a></li>
-				</ul>
-			</div>
-			<div class="col-md-12 col-sm-12 container" id ="changeSearch">
-					<!-- 검색어 입력란 -->
-					<div class="col-xs-3" style="float: right;">
-						<div class="input-group">
-							<input type="text" class="form-control" size="10" placeholder="Search Text" required>
-							<div class="input-group-btn">
-								<button type="button" class="btn" style="background-color: #6799FF;color: white;">Search</button>
-							</div>
+					<% }else{%>
+					<%for(int i= 0; i < boardList.size(); i++){%>
+					<tr style="text-align: left;">
+						<td><%=boardList.get(i).get("M_BOARDSEQ") %></td>
+						<td><a data-target="#myModal" data-toggle="modal" href="#myModal" onclick="boardAjax('getBoardContent.do', <%=boardList.get(i).get("M_BOARDSEQ") %>)" style="color: #FAF4C0;"><%=boardList.get(i).get("M_TITLE") %></a></td>
+						<td><%=boardList.get(i).get("M_USERID") %></td>
+						<td><%=boardList.get(i).get("M_DATE") %></td>
+						<td><%=boardList.get(i).get("M_COUNT") %></td>
+					</tr>
+					<% } %>
+					<%} %>
+			</tbody>
+		</table>
+		<!-- 게시판 끝 -->
+		<!-- 페이지 넘김 처리! -->
+		<div align="center">
+			<ul class="pagination" style="margin: center;">
+				<li><a href="javascript:fprevPage('', '', '')"
+					id="preBtn">Prev</a></li>
+				${pagingHtml}
+				<li><a href="javascript:fnextPage('', '', '')"
+					id="nextBtn">Next</a></li>
+			</ul>
+		</div>
+		<div class="col-md-12 col-sm-12 container" id ="changeSearch">
+				<!-- 검색어 입력란 -->
+				<div class="col-xs-3" style="float: right;">
+					<div class="input-group">
+						<input type="text" class="form-control" size="10" placeholder="Search Text" required>
+						<div class="input-group-btn">
+							<button type="button" class="btn" style="background-color: #6799FF;color: white;">Search</button>
 						</div>
 					</div>
-					<!-- 검색 콤보 박스 -->
-					<div class="dropup" style="float: right;">
-		
-						<select class="form-control" id="fb_category">
-							<optgroup label="Choice">
-								<option value="ALL">ALL</option>
-								<option value="NAME">Writer</option>
-								<option value="TITLE">Title</option>
-								<option value="CONTENT">Content</option>
-							</optgroup>
-						</select>
-					</div>
-		
-				<!-- 글쓰기 이동 -->
-				<div style="float: left;">
-					<button type="button" class="btn" style="background-color: #6799FF;color: white;">Write</button>
 				</div>
+				<!-- 검색 콤보 박스 -->
+				<div class="dropup" style="float: right;">
+	
+					<select class="form-control" id="fb_category">
+						<optgroup label="Choice">
+							<option value="ALL">ALL</option>
+							<option value="NAME">Writer</option>
+							<option value="TITLE">Title</option>
+							<option value="CONTENT">Content</option>
+						</optgroup>
+					</select>
+				</div>
+	
+			<!-- 글쓰기 이동 -->
+			<div style="float: left;">
+				<button type="button" class="btn" style="background-color: #6799FF;color: white;">Write</button>
 			</div>
 		</div>
 	</div>
