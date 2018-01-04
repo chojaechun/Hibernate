@@ -35,4 +35,23 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.getCount(map);
 	}
 
+	@Override
+	public String insertBoardContent(BoardVO boardVO) throws Exception {
+		String result;
+		try {
+			if(boardVO.getM_title().trim() == "" || boardVO.getM_content().trim() == "" || boardVO.getM_userid().trim() == "") {
+				result ="Fail";
+			}else {
+				boardDAO.insertBoardContent(boardVO);
+				result ="Success";
+			}
+			
+		} catch (Exception e) {
+			result ="Fail";
+			System.out.println(e + " / insert Fail");
+		}
+		
+		return result;
+	}
+
 }

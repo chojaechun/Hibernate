@@ -4,7 +4,7 @@ CREATE TABLE `m_board` (
   `m_title` varchar(45) NOT NULL,
   `m_content` varchar(1000) NOT NULL,
   `m_count` int(11) NOT NULL,
-  `m_date` date NOT NULL,
+  `m_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `m_delchk` varchar(4) NOT NULL,
   PRIMARY KEY (`m_boardseq`),
   UNIQUE KEY `index_UNIQUE` (`m_boardseq`)

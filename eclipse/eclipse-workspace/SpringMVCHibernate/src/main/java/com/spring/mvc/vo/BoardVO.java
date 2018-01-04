@@ -1,8 +1,9 @@
 package com.spring.mvc.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BoardVO {
+public class BoardVO implements Serializable{
 
 	private int m_boardseq;
 	private String m_userid;

@@ -24,4 +24,8 @@ public class BoardDAO extends AbstractDAO{
 		return (Integer) selectOne("board.getCount", map);
 	}
 
+	public void insertBoardContent(BoardVO boardVO) throws Exception {
+		insert("board.insertBoardContent", boardVO);
+	}
+	
 }

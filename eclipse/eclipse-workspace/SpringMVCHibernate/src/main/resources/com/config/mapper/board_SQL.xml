@@ -4,6 +4,7 @@
 <mapper namespace="board">
 	<!-- 나중에 23줄에서 관련검색 작성 -->
 	<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
+	<!-- board.selectBoardList -->
 	SELECT   M_BOARDSEQ,
              M_USERID,
              M_TITLE,
@@ -29,6 +30,7 @@
 	</select>
 
 	<select id="selectBoardContent" parameterType="int" resultType="com.spring.mvc.vo.BoardVO">
+	<!-- board.selectBoardContent -->
         <![CDATA[
             SELECT
                 M_BOARDSEQ,
@@ -47,7 +49,17 @@
 	</select>
 	
 	<select id="getCount" parameterType="map" resultType="Integer">
+	<!-- board.getCount -->
 		SELECT COUNT(*)	FROM M_BOARD
 	</select>
+	
+	<insert id="insertBoardContent" parameterType="com.spring.mvc.vo.BoardVO">
+	<!-- board.insertBoardContent -->
+		INSERT INTO M_BOARD (
+				M_USERID, M_TITLE, M_CONTENT, M_COUNT, M_DELCHK) 
+		VALUES (#{m_userid}, #{m_title}, #{m_content}, 0, 'N');
+	
+	</insert>
+	
 </mapper>
 

@@ -15,7 +15,9 @@
 <link type="text/css" rel="stylesheet" href="../assets/plugins/css/bootstrap/css/bootstrap.min.css" >
 <script	type="text/javascript"	src="../assets/plugins/jquery/1.11.0/jquery.min.js"></script>
 <script	type="text/javascript"	src="../assets/plugins/css/bootstrap/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="../module_js/board.js"></script> -->
 <script type="text/javascript" src="../js/board.js"></script>
+
 
 <style>
   /* Note: Try to remove the following lines to see the effect of CSS positioning */
@@ -81,7 +83,7 @@ $(document).ready(function(){
 					<%for(int i= 0; i < boardList.size(); i++){%>
 					<tr style="text-align: left;">
 						<td><%=boardList.get(i).get("M_BOARDSEQ") %></td>
-						<td><a data-target="#myModal" data-toggle="modal" href="#myModal" onclick="boardAjax('getBoardContent.do', <%=boardList.get(i).get("M_BOARDSEQ") %>)" style="color: #FAF4C0;"><%=boardList.get(i).get("M_TITLE") %></a></td>
+						<td><a data-target="#myModal" data-toggle="modal" href="#myModal" onclick="boardAjax(<%=boardList.get(i).get("M_BOARDSEQ") %>)" style="color: #FAF4C0;"><%=boardList.get(i).get("M_TITLE") %></a></td>
 						<td><%=boardList.get(i).get("M_USERID") %></td>
 						<td><%=boardList.get(i).get("M_DATE") %></td>
 						<td><%=boardList.get(i).get("M_COUNT") %></td>
@@ -126,7 +128,9 @@ $(document).ready(function(){
 	
 			<!-- 글쓰기 이동 -->
 			<div style="float: left;">
-				<button type="button" class="btn" style="background-color: #6799FF;color: white;">Write</button>
+				<button type="button" class="btn" style="background-color: #6799FF;color: white;" data-target="#myModal" data-toggle="modal" onclick="checkWriteStatus()">
+					Write
+				</button>
 			</div>
 		</div>
 	</div>
@@ -172,22 +176,24 @@ $(document).ready(function(){
 		<div class="modal-header" style="padding:35px 50px;background-color: #6799FF;">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 			<h4 style="background-color: #6799FF;"><span class="glyphicon glyphicon-file" ></span>&nbsp;Board Content</h4>
+			<input type="hidden" value="insertContent" id = "contentStatus">
 		</div>
 		<div class="modal-body" style="padding:20px 50px;">
-			<form role="form">
+			<form role="form" id="boardContentForm" method="post"><!--  enctype="multipart/form-data" -->
+				<input type="hidden" id ="m_userid" name="m_userid" value="test">
 				<div class="form-group">
 					<label for="usrname"><span class="glyphicon glyphicon-user"></span> Title</label>
-					<input type="text" class="form-control" id="m_usrname" placeholder="Enter Title">
+					<input type="text" class="form-control" id="m_title" name="m_title" placeholder="Enter Title">
 				</div>
 				<div class="form-group">
 					<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Content</label>
-					<textarea class="form-control" id="m_content" rows="8" placeholder="Enter Content" ></textarea>
+					<textarea class="form-control" id="m_content" rows="8" name="m_content" placeholder="Enter Content" ></textarea>
 				</div>
 			</form>
         </div>
 		<div class="modal-footer">
-		<button type="submit" class="btn btn-default pull-left" style="background-color: #6799FF;color: white;" data-dismiss="modal">Save</button>
-			<button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+		<button type="submit" class="btn btn-default pull-left" style="background-color: #6799FF;color: white;" data-dismiss="modal" id="saveBtn" onclick="boardWriteAjax()">Save</button>
+		<button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,1 @@
+function boardAjax(n,o){console.warn(n,o);var t={userSeq:o};$.ajax({url:n,contentType:"application/json",type:"GET",data:t,success:function(n){console.log(n.m_title),console.log(n),$("#m_usrname").val(n.m_title),$("#m_content").val(n.m_content)},error:function(n,o,t){alert("에러 발생~~ \n"+o+" : "+t)}})}

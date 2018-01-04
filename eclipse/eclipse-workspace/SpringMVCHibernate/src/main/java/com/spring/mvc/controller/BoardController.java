@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,16 +79,12 @@ public class BoardController {
         return mv;
     }
     
-    @RequestMapping(value="/board/boardWrite.do")
-    public ModelAndView boardWrite(Map<String,Object> commandMap) throws Exception{
-        
-    	ModelAndView mv = new ModelAndView("/boardWriteForm");
-        log.debug("인터셉터 테스트2");
-         
-        List<BoardVO> list = boardService.selectBoardList(commandMap);
-        mv.addObject("boardList", list);
-         
-        return mv;
+    @RequestMapping(value="/board/boardWrite.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String boardWrite(@RequestBody BoardVO boardVO) throws Exception{
+//    	ModelAndView mv = new ModelAndView("/boardWriteForm");
+    	
+        return boardService.insertBoardContent(boardVO);
     }
         
     

@@ -10,5 +10,5 @@ public interface BoardService {
 	List<BoardVO> selectBoardList(Map<String, Object> map) throws Exception;
 	BoardVO selectBoardContent(int boardSeq) throws Exception;
 	int getCount(HashMap<String, Object> map);
-	
+	String insertBoardContent(BoardVO boardVO) throws Exception;
 }

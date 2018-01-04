@@ -4,7 +4,7 @@
 <link type="text/css" rel="stylesheet" href="../assets/plugins/css/bootstrap/css/bootstrap.min.css" >
 <script	type="text/javascript" src="../assets/plugins/jquery/1.11.0/jquery.min.js"></script>
 <script	type="text/javascript" src="../assets/plugins/css/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/home.js"></script>
+<script type="text/javascript" src="../module_js/home.js"></script>
 <head>
 <meta charset="utf-8">
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
