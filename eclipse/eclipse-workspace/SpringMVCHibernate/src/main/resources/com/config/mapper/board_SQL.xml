@@ -58,8 +58,16 @@
 		INSERT INTO M_BOARD (
 				M_USERID, M_TITLE, M_CONTENT, M_COUNT, M_DELCHK) 
 		VALUES (#{m_userid}, #{m_title}, #{m_content}, 0, 'N');
-	
 	</insert>
+	
+	<update id="updateBoardContent" parameterType="com.spring.mvc.vo.BoardVO">
+		UPDATE M_BOARD 
+		SET 
+		 M_TITLE = #{m_title}, 
+		 M_CONTENT = #{m_content},
+		 M_DATE = #{m_date}
+		WHERE M_BOARDSEQ = #{m_boardseq}
+	</update>
 	
 </mapper>
 

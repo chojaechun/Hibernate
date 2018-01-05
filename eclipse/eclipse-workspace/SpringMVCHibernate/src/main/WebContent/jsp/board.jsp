@@ -75,17 +75,19 @@ $(document).ready(function(){
 			<tbody>
 				<% List<Map<String,Object>> boardList = (List)request.getAttribute("boardList"); %>
 				
-					<%if(boardList == null){%>
+					<%if(boardList.size() == 0){%>
 					<tr>
 						<td colspan="5">등록된 글이 없습니다.</td>
 					</tr>
 					<% }else{%>
-					<%for(int i= 0; i < boardList.size(); i++){%>
+					<%for(int i= 0; i < boardList.size(); i++){
+						String getDate = boardList.get(i).get("M_DATE").toString().substring(0, 16);
+					%>
 					<tr style="text-align: left;">
 						<td><%=boardList.get(i).get("M_BOARDSEQ") %></td>
 						<td><a data-target="#myModal" data-toggle="modal" href="#myModal" onclick="boardAjax(<%=boardList.get(i).get("M_BOARDSEQ") %>)" style="color: #FAF4C0;"><%=boardList.get(i).get("M_TITLE") %></a></td>
 						<td><%=boardList.get(i).get("M_USERID") %></td>
-						<td><%=boardList.get(i).get("M_DATE") %></td>
+						<td><%=getDate %></td>
 						<td><%=boardList.get(i).get("M_COUNT") %></td>
 					</tr>
 					<% } %>
@@ -128,7 +130,7 @@ $(document).ready(function(){
 	
 			<!-- 글쓰기 이동 -->
 			<div style="float: left;">
-				<button type="button" class="btn" style="background-color: #6799FF;color: white;" data-target="#myModal" data-toggle="modal" onclick="checkWriteStatus()">
+				<button type="button" class="btn" style="background-color: #6799FF;color: white;" data-target="#myModal" data-toggle="modal" onclick="clearWriteStatus()">
 					Write
 				</button>
 			</div>
@@ -177,6 +179,7 @@ $(document).ready(function(){
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 			<h4 style="background-color: #6799FF;"><span class="glyphicon glyphicon-file" ></span>&nbsp;Board Content</h4>
 			<input type="hidden" value="insertContent" id = "contentStatus">
+			<input type="hidden" name="m_boardseq" id="m_boardseq">
 		</div>
 		<div class="modal-body" style="padding:20px 50px;">
 			<form role="form" id="boardContentForm" method="post"><!--  enctype="multipart/form-data" -->
@@ -189,11 +192,12 @@ $(document).ready(function(){
 					<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Content</label>
 					<textarea class="form-control" id="m_content" rows="8" name="m_content" placeholder="Enter Content" ></textarea>
 				</div>
+				<input type="hidden" name="m_date" id="m_date">
 			</form>
         </div>
 		<div class="modal-footer">
 		<button type="submit" class="btn btn-default pull-left" style="background-color: #6799FF;color: white;" data-dismiss="modal" id="saveBtn" onclick="boardWriteAjax()">Save</button>
-		<button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+		<button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal" onclick="clearWriteStatus()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 		</div>
 	</div>
 </div>

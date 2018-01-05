@@ -48,7 +48,26 @@ public class BoardServiceImpl implements BoardService{
 			
 		} catch (Exception e) {
 			result ="Fail";
-			System.out.println(e + " / insert Fail");
+			System.out.println(e + " / Insert Fail");
+		}
+		
+		return result;
+	}
+
+	@Override
+	public String updateBoardContent(BoardVO boardVO) throws Exception {
+		String result;
+		try {
+			if(boardVO.getM_title().trim() == "" || boardVO.getM_content().trim() == "" || boardVO.getM_userid().trim() == "") {
+				result ="Fail";
+			}else {
+				boardDAO.updateBoardContent(boardVO);
+				result ="Success";
+			}
+			
+		} catch (Exception e) {
+			result ="Fail";
+			System.out.println(e + " / Update Fail");
 		}
 		
 		return result;

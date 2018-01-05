@@ -79,23 +79,33 @@ public class BoardController {
         return mv;
     }
     
+	 @RequestMapping(value="/board/getBoardContent.do")
+	 @ResponseBody
+	 public BoardVO getBoardContent(@RequestParam(value="userSeq")String boardSeq) throws Exception{
+	 	int getBoardSeq = Integer.parseInt(boardSeq);
+	 	BoardVO boardContent = boardService.selectBoardContent(getBoardSeq);
+	 	log.debug("call Board Content Seq : "+boardSeq+" / get Board Content Seq : "+boardContent.getM_boardseq());
+	 	
+	 	return boardContent;
+	 }
+    
     @RequestMapping(value="/board/boardWrite.do", method = RequestMethod.POST)
     @ResponseBody
     public String boardWrite(@RequestBody BoardVO boardVO) throws Exception{
+    	/** 
+    	 * @ResponseBody, @RequestBody JSON 형태로 주고 받도록 도와주는 역할.
+    	 * */ 
 //    	ModelAndView mv = new ModelAndView("/boardWriteForm");
     	
         return boardService.insertBoardContent(boardVO);
     }
-        
     
-    @RequestMapping(value="/board/getBoardContent.do")
+    @RequestMapping(value="/board/boardModify.do", method = RequestMethod.POST)
     @ResponseBody
-    public BoardVO getBoardContent(@RequestParam(value="userSeq")String boardSeq) throws Exception{
+    public String boardModify(@RequestBody BoardVO boardVO, @RequestParam(value="m_boardseq")String boardSeq) throws Exception{
     	int getBoardSeq = Integer.parseInt(boardSeq);
-    	BoardVO boardContent = boardService.selectBoardContent(getBoardSeq);
-    	log.debug("call Board Content Seq : "+boardSeq+" / get Board Content Seq : "+boardContent.getM_boardseq());
-    	
-    	return boardContent;
-    }
-    
+    	boardVO.setM_boardseq(getBoardSeq);
+        return boardService.updateBoardContent(boardVO);
+    }    
+ 
 }

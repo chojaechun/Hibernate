@@ -5,15 +5,18 @@
 
 function boardAjax(getContSeq){
 	console.warn(getContSeq);
-	var allData = {"userSeq": getContSeq};
+	var userSeq = {"userSeq": getContSeq};
     $.ajax({
         url:'getBoardContent.do',
         contentType: "application/json",
         type:'GET',
-        data: allData,
+        data: userSeq,
         success:function(data){
+        	console.log(data);
             $('#m_title').val(data.m_title);
             $('#m_content').val(data.m_content);
+            $('#m_date').val(data.m_date);
+            $('#m_boardseq').val(data.m_boardseq);
             $('#contentStatus').val('modifyContent');
             $('#saveBtn').text('Modify');
         },
@@ -34,8 +37,12 @@ function objectifyForm(formArray) {//serialize data function
 	return returnArray;
 }
 
-function checkWriteStatus(){
+function clearWriteStatus(){
 	$('#contentStatus').val('insertContent');
+    $('#m_title').val('');
+    $('#m_content').val('');
+    $('#m_date').val('');
+    $('#m_boardseq').val('');
 	$('#saveBtn').text('Save');
 }
 
@@ -52,8 +59,9 @@ function boardWriteAjax(){
 	//var boardJson = new Object();
 	//boardJson.m_title = 'aa';
 	
+	// modify
 	if($('#contentStatus').val() == 'modifyContent'){
-		formUrl = 'tt'; // 추후 update 문 url
+		formUrl = 'boardModify.do?m_boardseq='+$('#m_boardseq').val(); // 추후 update 문 url
 	}
 	
 	$.ajax({

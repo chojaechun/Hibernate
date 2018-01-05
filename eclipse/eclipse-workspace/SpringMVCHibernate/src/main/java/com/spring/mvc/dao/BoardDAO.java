@@ -27,5 +27,9 @@ public class BoardDAO extends AbstractDAO{
 	public void insertBoardContent(BoardVO boardVO) throws Exception {
 		insert("board.insertBoardContent", boardVO);
 	}
+
+	public void updateBoardContent(BoardVO boardVO) throws Exception {
+		update("board.updateBoardContent", boardVO);
+	}
 	
 }
