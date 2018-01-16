@@ -26,7 +26,7 @@ import com.spring.mvc.vo.BoardVO;
 public class BoardController {
     Logger log = Logger.getLogger(this.getClass());
 	private int pageSize = 10;
-	private int blockCount = 10;
+	private int blockCount = 5;
     
     @Resource(name="boardService")
     private BoardService boardService;

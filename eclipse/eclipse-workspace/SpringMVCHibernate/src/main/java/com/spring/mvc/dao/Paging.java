@@ -55,7 +55,7 @@ public class Paging {
 						+ keyField + "&keyWord=" + keyWord + "&pageNum="
 						+ (startPage - 1) + addKey + "#thirdContainer"+" style='text-decoration: none;'>");
 			}
-			this.pagingHtml.append("<font size='2'><</font>");
+			this.pagingHtml.append("<font size='2'>Prev</font>");
 			this.pagingHtml.append("</a></li>");
 		}
 		
@@ -94,7 +94,7 @@ public class Paging {
 						+ keyField + "&keyWord=" + keyWord + "&pageNum="
 						+ (endPage + 1) + addKey +"#thirdContainer"+" style='text-decoration: none;'>");
 			}
-			this.pagingHtml.append("<font size='2'>></font>");
+			this.pagingHtml.append("<font size='2'>Next</font>");
 			this.pagingHtml.append("</a></li>");
 		}
 		

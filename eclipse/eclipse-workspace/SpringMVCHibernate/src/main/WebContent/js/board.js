@@ -82,3 +82,17 @@ function boardWriteAjax(){
     });
 	
 }
+
+function boardSearchCk(){
+	console.log($('#fb_category').val());
+	//console.log("url : "+$(location).attr('protocol')+"//"+$(location).attr('host')+""+$(location).attr('pathname')+""+$(location).attr('search'));
+	console.log($(location).attr('search'));
+	var path = $(location).attr('search');
+	// keyField= 부터 시작해서 keyWord 까지 length 만 구한다.
+	
+	/*var keyField = path.split('keyField');
+	var keyWord
+	var pageNum
+	*/
+	
+}

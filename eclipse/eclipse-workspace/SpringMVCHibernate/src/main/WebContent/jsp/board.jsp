@@ -98,11 +98,9 @@ $(document).ready(function(){
 		<!-- 페이지 넘김 처리! -->
 		<div align="center">
 			<ul class="pagination" style="margin: center;">
-				<li><a href="javascript:fprevPage('', '', '')"
-					id="preBtn">Prev</a></li>
+				<!-- <li><a href="javascript:fprevPage('', '', '')"  id="preBtn">Prev</a></li> -->
 				${pagingHtml}
-				<li><a href="javascript:fnextPage('', '', '')"
-					id="nextBtn">Next</a></li>
+				<!-- <li><a href="javascript:fnextPage('', '', '')" id="nextBtn">Next</a></li> -->
 			</ul>
 		</div>
 		<div class="col-md-12 col-sm-12 container" id ="changeSearch">
@@ -111,7 +109,7 @@ $(document).ready(function(){
 					<div class="input-group">
 						<input type="text" class="form-control" size="10" placeholder="Search Text" required>
 						<div class="input-group-btn">
-							<button type="button" class="btn" style="background-color: #6799FF;color: white;">Search</button>
+							<button type="button" class="btn" style="background-color: #6799FF;color: white;" onclick="boardSearchCk()">Search</button>
 						</div>
 					</div>
 				</div>
