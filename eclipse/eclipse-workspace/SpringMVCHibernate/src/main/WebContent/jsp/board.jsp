@@ -49,12 +49,6 @@
 <title>Main</title>
 
 </head>
-<script type="text/javascript">
-$(document).ready(function(){
-
-});
-
-</script>
   
 <body>
 	<div id="changeFBTableList">
@@ -107,7 +101,7 @@ $(document).ready(function(){
 				<!-- 검색어 입력란 -->
 				<div class="col-xs-3" style="float: right;">
 					<div class="input-group">
-						<input type="text" class="form-control" size="10" placeholder="Search Text" required>
+						<input type="text" class="form-control" size="10" id="fb_searchinput" placeholder="Search Text" required >
 						<div class="input-group-btn">
 							<button type="button" class="btn" style="background-color: #6799FF;color: white;" onclick="boardSearchCk()">Search</button>
 						</div>

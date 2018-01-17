@@ -1,7 +1,43 @@
 /**
+ * search 기능 ( pageNum, pageCont, textField 도 함께 가지고와서 select ) OK
+글 삭제 기능 Delete N 체크만 하도록
+session 기능 생성
+회원가입 로그인 로그아웃 ( trim 체크 id 체크 )
+회원만 글 작성 ( 글 등록 버튼시 user check, 글 작성 버튼시 user check )
+회원 정보 일치시 수정 및 삭제 기능
+
+
+admin 생성
+admin 게시글 삭제 기능 if admin and userId
+Delete Y 인 경우 color red 변경 ( admin 만 select 가능하게끔 )
+Delete Y 인 경우 button을 Real Delete 로 변경 ( admin 만 )
+ * 
  * 
  */
 
+$(document).ready(function(){
+	var pageNum = '';
+	var keyWord = '';
+	var keyField = '';
+	
+	var path = decodeURI($(location).attr('search'),'utf-8');
+	console.log(path);
+	var pathField = path.split('&');
+	
+	for(var i =0; i<pathField.length; i++){
+		var k = pathField[i].split('=');
+		if(k[0] == '?pageNum' || k[0] == 'pageNum' ){pageNum = k[1];}
+		if(k[0] == '?keyWord' || k[0] == 'keyWord' ){keyWord = k[1];}
+		if(k[0] == '?keyField' || k[0] == 'keyField' ){keyField = k[1];}
+	}
+
+	var t_keyWord = $('#fb_category').val();
+	if(keyWord == '' || keyWord == undefined || keyWord == 'null'){keyWord = 'ALL';}
+	
+	$('#fb_category').val(keyWord);
+	$('#fb_searchinput').val(keyField);
+	
+});
 
 function boardAjax(getContSeq){
 	console.warn(getContSeq);
@@ -84,15 +120,14 @@ function boardWriteAjax(){
 }
 
 function boardSearchCk(){
-	console.log($('#fb_category').val());
-	//console.log("url : "+$(location).attr('protocol')+"//"+$(location).attr('host')+""+$(location).attr('pathname')+""+$(location).attr('search'));
-	console.log($(location).attr('search'));
-	var path = $(location).attr('search');
-	// keyField= 부터 시작해서 keyWord 까지 length 만 구한다.
+	//console.log("url : "+$(location).attr('protocol')+"//$$"+$(location).attr('host')+"$$"+$(location).attr('pathname')+"$$"+$(location).attr('search'));
 	
-	/*var keyField = path.split('keyField');
-	var keyWord
-	var pageNum
-	*/
+	var t_keyWord = $('#fb_category').val();
+	var t_keyField = $('#fb_searchinput').val();
 	
+	var hrefPath = $(location).attr('protocol')+'//'+$(location).attr('host')+''+$(location).attr('pathname');
+	hrefPath +='?pageNum=1'+'&keyWord='+t_keyWord+'&keyField='+t_keyField+'#thirdContainer';
+	
+	location.href = hrefPath;
+
 }

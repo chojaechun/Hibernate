@@ -73,9 +73,9 @@ public class BoardController {
 		mv.addObject("boardList", list);
 		mv.addObject("pagingHtml", pagingHtml);
 		mv.addObject("number", Integer.valueOf(number));
-		
-        log.debug("DATA SIZE() = "+list.size());
-         
+
+		log.debug("keyField = "+keyField + " / keyWord = "+keyWord+" / DATA SIZE() = "+list.size());
+        
         return mv;
     }
     

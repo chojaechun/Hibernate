@@ -5,27 +5,44 @@
 	<!-- 나중에 23줄에서 관련검색 작성 -->
 	<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
 	<!-- board.selectBoardList -->
-	SELECT   M_BOARDSEQ,
-             M_USERID,
-             M_TITLE,
-             M_COUNT,
-             M_DATE
+	SELECT   M_BOARDSEQ
+             , M_USERID
+             , M_TITLE
+             , M_CONTENT	
+             , M_COUNT
+             , M_DATE
     FROM ( SELECT 	@ROWNUM:=@ROWNUM +1 AS ROW, 
-	    			A.M_BOARDSEQ,
-	                A.M_USERID,
-	                A.M_TITLE,
-	                A.M_COUNT,
-	                A.M_DATE
-		   FROM ( SELECT M_BOARDSEQ,
-			             M_USERID,
-			             M_TITLE,
-			             M_COUNT,
-			             M_DATE 
-		          FROM M_BOARD ORDER BY M_BOARDSEQ DESC) A, 
+	    			A.M_BOARDSEQ
+	                , A.M_USERID
+	                , A.M_TITLE
+             		, A.M_CONTENT	
+	                , A.M_COUNT
+	                , A.M_DATE
+		   FROM ( SELECT M_BOARDSEQ
+			             , M_USERID
+			             , M_TITLE
+             			 , M_CONTENT	
+			             , M_COUNT
+			             , M_DATE
+		          FROM M_BOARD
+				<choose>
+					<when test="keyWord == 'TITLE'">
+						WHERE M_TITLE LIKE CONCAT('%', #{keyField}, '%')
+					</when>
+					<when test="keyWord == 'CONTENT'">
+						WHERE M_CONTENT LIKE CONCAT('%', #{keyField}, '%')
+					</when>
+					<otherwise>
+						WHERE M_TITLE LIKE CONCAT('%', #{keyField}, '%')
+						OR M_CONTENT LIKE CONCAT('%', #{keyField}, '%')
+					</otherwise>
+				</choose>
+		          ORDER BY M_BOARDSEQ DESC) A, 
 		          	   (SELECT @ROWNUM:=0)B)C 
 	 		<![CDATA[		  
 	 			  WHERE C.ROW BETWEEN #{start} AND #{end}
-			]]>		
+			]]>	
+		
 		
 	</select>
 
@@ -51,6 +68,18 @@
 	<select id="getCount" parameterType="map" resultType="Integer">
 	<!-- board.getCount -->
 		SELECT COUNT(*)	FROM M_BOARD
+		<choose>
+			<when test="keyWord == 'TITLE'">
+				WHERE M_TITLE LIKE CONCAT('%', #{keyField}, '%')
+			</when>
+			<when test="keyWord == 'CONTENT'">
+				WHERE M_CONTENT LIKE CONCAT('%', #{keyField}, '%')
+			</when>
+			<otherwise>
+				WHERE M_TITLE LIKE CONCAT('%', #{keyField}, '%')
+				OR M_CONTENT LIKE CONCAT('%', #{keyField}, '%')
+			</otherwise>
+		</choose>
 	</select>
 	
 	<insert id="insertBoardContent" parameterType="com.spring.mvc.vo.BoardVO">
