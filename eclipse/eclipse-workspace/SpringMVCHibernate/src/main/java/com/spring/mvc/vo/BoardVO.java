@@ -5,13 +5,16 @@ import java.util.Date;
 
 public class BoardVO implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private int m_boardseq;
 	private String m_userid;
+	private String m_usernik;
 	private String m_title;
 	private String m_content;
 	private int m_count;
 	private Date m_date;
-	private String m_usernik;
+	private String m_delchk;
 	
 	public int getM_boardseq() {
 		return m_boardseq;
@@ -55,11 +58,18 @@ public class BoardVO implements Serializable{
 	public void setM_usernik(String m_usernik) {
 		this.m_usernik = m_usernik;
 	}
+	public String getM_delchk() {
+		return m_delchk;
+	}
+	public void setM_delchk(String m_delchk) {
+		this.m_delchk = m_delchk;
+	}
 	
 	@Override
 	public String toString() {
-		return "BoardVO [m_boardseq=" + m_boardseq + ", m_userid=" + m_userid + ", m_title=" + m_title + ", m_content="
-				+ m_content + ", m_count=" + m_count + ", m_date=" + m_date + ", m_usernik=" + m_usernik + "]";
+		return "BoardVO [m_boardseq=" + m_boardseq + ", m_userid=" + m_userid + ", m_usernik=" + m_usernik
+				+ ", m_title=" + m_title + ", m_content=" + m_content + ", m_count=" + m_count + ", m_date=" + m_date
+				+ ", m_delchk=" + m_delchk + "]";
 	}
 	
 }

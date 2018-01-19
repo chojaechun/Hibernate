@@ -32,4 +32,8 @@ public class BoardDAO extends AbstractDAO{
 		update("board.updateBoardContent", boardVO);
 	}
 	
+	public void updateHitBoardContent(BoardVO boardVO) throws Exception {
+		update("board.updateHitBoardContent", boardVO);
+	}
+	
 }

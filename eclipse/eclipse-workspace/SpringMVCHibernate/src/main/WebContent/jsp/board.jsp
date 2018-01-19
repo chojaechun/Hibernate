@@ -52,18 +52,18 @@
   
 <body>
 	<div id="changeFBTableList">
-		<h3 class="text-left">Board</h3>
+		<h3 class="text-left">BOARD</h3>
 
 		<div class="col-sm-12">&nbsp;</div>
 		<!-- 게시판 리스트 출력 -->
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th width="100px">No</th>
-					<th width="500px">Title</th>
-					<th width="200px">Writer</th>
-					<th width="150px">Regdate</th>
-					<th width="50px">hit</th>
+					<th width="100px">NO</th>
+					<th width="500px">TITLE</th>
+					<th width="200px">WRITER</th>
+					<th width="150px">DATE</th>
+					<th width="50px">HIT</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -80,7 +80,7 @@
 					<tr style="text-align: left;">
 						<td><%=boardList.get(i).get("M_BOARDSEQ") %></td>
 						<td><a data-target="#myModal" data-toggle="modal" href="#myModal" onclick="boardAjax(<%=boardList.get(i).get("M_BOARDSEQ") %>)" style="color: #FAF4C0;"><%=boardList.get(i).get("M_TITLE") %></a></td>
-						<td><%=boardList.get(i).get("M_USERID") %></td>
+						<td><%=boardList.get(i).get("M_USERNIK") %></td>
 						<td><%=getDate %></td>
 						<td><%=boardList.get(i).get("M_COUNT") %></td>
 					</tr>
@@ -112,7 +112,7 @@
 	
 					<select class="form-control" id="fb_category">
 						<optgroup label="Choice">
-							<option value="ALL">ALL</option>
+							<option value="ALL">All</option>
 							<option value="NAME">Writer</option>
 							<option value="TITLE">Title</option>
 							<option value="CONTENT">Content</option>
@@ -176,6 +176,7 @@
 		<div class="modal-body" style="padding:20px 50px;">
 			<form role="form" id="boardContentForm" method="post"><!--  enctype="multipart/form-data" -->
 				<input type="hidden" id ="m_userid" name="m_userid" value="test">
+				<input type="hidden" id ="m_usernik" name="m_usernik" value="test2">
 				<div class="form-group">
 					<label for="usrname"><span class="glyphicon glyphicon-user"></span> Title</label>
 					<input type="text" class="form-control" id="m_title" name="m_title" placeholder="Enter Title">
@@ -189,7 +190,7 @@
         </div>
 		<div class="modal-footer">
 		<button type="submit" class="btn btn-default pull-left" style="background-color: #6799FF;color: white;" data-dismiss="modal" id="saveBtn" onclick="boardWriteAjax()">Save</button>
-		<button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal" onclick="clearWriteStatus()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+		<button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 		</div>
 	</div>
 </div>

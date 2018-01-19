@@ -57,33 +57,34 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-default">
-  <div style="width: 90%;float: left;">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" style="margin-left: 20px" href="#">JOJAE</a>
+<nav class="navbar navbar-inverse navbar-fixed-top"  role=”navigation”>
+	<div class=”container-fluid“>
+		<div style="width: 50%;float: left;">
+			<div class="navbar-header">
+				<a class="navbar-brand" style="margin-left: 20px" href="#">JOJAE</a>
+	    	</div>
+	  	</div>
+	  	<div style="margin:auto">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>                        
+			</button>
+	  	</div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav navbar-right" style="margin-right: 20px">
+	        <li><a href="#mainContainer">ME</a></li>
+	        <li><a href="#secondContainer">NOTE</a></li>
+	        <li><a href="#thirdContainer">BOARD</a></li>
+			<li><a href="#thirdContainer">LOGIN</a></li>
+	      </ul>
+	    </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#mainContainer">ME</a></li>
-        <li><a href="#secondContainer">NOTE</a></li>
-        <li><a href="#thirdContainer">BOARD</a></li>
-      </ul>
-    </div>
-  </div>
-	<div style="float: right;margin-right: 20px">
-		<ul class="nav navbar-nav navbar-right">
-			<li><a style="cursor: pointer;">Login</a></li>
-		</ul>
-  </div>
 </nav>
 
 <!-- First Container -->
-<div class="container-fluid text-center" style="background-color: #EAEAEA;" id ="mainContainer">
+<div class="container-fluid text-center" style="background-color: #EAEAEA;padding-top: 10%;" id ="mainContainer">
   <h3 class="margin">Main Title Page</h3>
   <img src="../assets/img/bird.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
   
@@ -91,7 +92,7 @@
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-3 text-center" id ="secondContainer">
+<div class="container-fluid bg-3 text-center" id ="secondContainer" style="padding-top: 10%">
 	<div id ='default_layout_hidden' style="display: none;">
 		<div style="margin-right:30px;float: right;" id ='%SubID_1%'>
 			<a onclick="subPage('%ID_1%')" style="cursor: pointer;">%ID_2%</a>
@@ -117,7 +118,7 @@
 </div>
 
 <!-- Third Container (Grid) -->
-<div class="container-fluid bg-2 text-center"  id="thirdContainer">
+<div class="container-fluid bg-2 text-center"  id="thirdContainer" style="padding-top: 10%">
 	<div style="width: 80%;margin:auto">
 		<jsp:include page="/jsp/board.jsp" flush="true" />
 	</div>	

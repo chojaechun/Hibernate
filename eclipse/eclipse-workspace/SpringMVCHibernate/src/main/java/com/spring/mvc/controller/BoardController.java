@@ -84,6 +84,14 @@ public class BoardController {
 	 public BoardVO getBoardContent(@RequestParam(value="userSeq")String boardSeq) throws Exception{
 	 	int getBoardSeq = Integer.parseInt(boardSeq);
 	 	BoardVO boardContent = boardService.selectBoardContent(getBoardSeq);
+	 	
+	 	BoardVO boardHitOnly = new BoardVO();
+	 	boardHitOnly.setM_boardseq(boardContent.getM_boardseq());
+	 	int getupdateHit = boardContent.getM_count()+1;
+	 	boardHitOnly.setM_count(getupdateHit);
+	 	
+	 	boardService.updateHitBoardContent(boardHitOnly);
+	 	
 	 	log.debug("call Board Content Seq : "+boardSeq+" / get Board Content Seq : "+boardContent.getM_boardseq());
 	 	
 	 	return boardContent;

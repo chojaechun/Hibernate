@@ -1,5 +1,6 @@
 /**
  * search 기능 ( pageNum, pageCont, textField 도 함께 가지고와서 select ) OK
+hit 기능 생성
 글 삭제 기능 Delete N 체크만 하도록
 session 기능 생성
 회원가입 로그인 로그아웃 ( trim 체크 id 체크 )
@@ -12,6 +13,13 @@ admin 게시글 삭제 기능 if admin and userId
 Delete Y 인 경우 color red 변경 ( admin 만 select 가능하게끔 )
 Delete Y 인 경우 button을 Real Delete 로 변경 ( admin 만 )
  * 
+ * 
+ * JSON 화 : JSON.stringify(formJson)
+ * OBJECT 선언 : var boardJson = new Object();
+ * 		OBJECT 변수 선언 : boardJson.m_title = 'aa';
+ * 전체 URL GET : console.log("url : "+$(location).attr('protocol')+"//"+$(location).attr('host')+""+$(location).attr('pathname')+""+$(location).attr('search'));
+ * 
+	
  * 
  */
 
@@ -57,8 +65,8 @@ function boardAjax(getContSeq){
             $('#saveBtn').text('Modify');
         },
         error:function(jqXHR, textStatus, errorThrown){
-            alert("error \n" + textStatus + " : " + errorThrown);
-           self.close(); // alert 창 닫는 메서드 self 는 자신 , window.close()는 현재 보고있는 창 close
+        	alert("error \n" + textStatus + " : " + errorThrown);
+        	self.close(); // alert 창 닫는 메서드 self 는 자신 , window.close()는 현재 보고있는 창 close
         }
     });
 }
@@ -90,10 +98,9 @@ function boardWriteAjax(){
 	var formData = $("#boardContentForm").serializeArray();
 	var formJson = objectifyForm(formData);
 	var formUrl = 'boardWrite.do';
-	//console.log(JSON.stringify(formJson));
 	
-	//var boardJson = new Object();
-	//boardJson.m_title = 'aa';
+	var t_keyWord = $('#fb_category').val();
+	var t_keyField = $('#fb_searchinput').val();
 	
 	// modify
 	if($('#contentStatus').val() == 'modifyContent'){
@@ -120,7 +127,6 @@ function boardWriteAjax(){
 }
 
 function boardSearchCk(){
-	//console.log("url : "+$(location).attr('protocol')+"//$$"+$(location).attr('host')+"$$"+$(location).attr('pathname')+"$$"+$(location).attr('search'));
 	
 	var t_keyWord = $('#fb_category').val();
 	var t_keyField = $('#fb_searchinput').val();

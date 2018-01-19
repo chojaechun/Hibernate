@@ -73,4 +73,9 @@ public class BoardServiceImpl implements BoardService{
 		return result;
 	}
 
+	@Override
+	public void updateHitBoardContent(BoardVO boardVO) throws Exception {
+		boardDAO.updateHitBoardContent(boardVO);
+	}
+
 }

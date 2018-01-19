@@ -12,4 +12,5 @@ public interface BoardService {
 	int getCount(HashMap<String, Object> map);
 	String insertBoardContent(BoardVO boardVO) throws Exception;
 	String updateBoardContent(BoardVO boardVO) throws Exception;
+	void updateHitBoardContent(BoardVO boardVO) throws Exception;
 }
