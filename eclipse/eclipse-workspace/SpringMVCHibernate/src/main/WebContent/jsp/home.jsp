@@ -7,7 +7,7 @@
 <script	type="text/javascript" src="../assets/plugins/jquery/1.11.0/jquery.min.js"></script>
 <script	type="text/javascript" src="../assets/plugins/css/bootstrap/js/bootstrap.min.js"></script>
 <script	type="text/javascript" src="../assets/plugins/slick/js/slick.js"></script>
-<script type="text/javascript" src="../js/home.js"></script>
+<script type="text/javascript" src="../module_js/home.js"></script>
 <head>
 <meta charset="utf-8">
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>

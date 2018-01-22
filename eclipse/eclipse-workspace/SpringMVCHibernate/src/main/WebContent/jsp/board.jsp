@@ -16,7 +16,7 @@
 <script	type="text/javascript"	src="../assets/plugins/jquery/1.11.0/jquery.min.js"></script>
 <script	type="text/javascript"	src="../assets/plugins/css/bootstrap/js/bootstrap.min.js"></script>
 <!-- <script type="text/javascript" src="../module_js/board.js"></script> -->
-<script type="text/javascript" src="../js/board.js"></script>
+<script type="text/javascript" src="../module_js/board.js"></script>
 
 
 <style>
