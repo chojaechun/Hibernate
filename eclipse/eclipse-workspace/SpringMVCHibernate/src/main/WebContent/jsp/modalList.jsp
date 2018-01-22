@@ -26,7 +26,7 @@
 </style>
 
 <div class="modal fade" id="" role="dialog">
-	<div class="modal-content">
+	<div class="modal-content" style="width: 60%;margin: auto;margin-top: 10%">
 		<div class="modal-header" style="padding:35px 50px;">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 			<h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
