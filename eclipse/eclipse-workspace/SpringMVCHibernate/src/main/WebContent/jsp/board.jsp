@@ -15,8 +15,8 @@
 <link type="text/css" rel="stylesheet" href="../assets/plugins/css/bootstrap/css/bootstrap.min.css" >
 <script	type="text/javascript"	src="../assets/plugins/jquery/1.11.0/jquery.min.js"></script>
 <script	type="text/javascript"	src="../assets/plugins/css/bootstrap/js/bootstrap.min.js"></script>
-<!-- <script type="text/javascript" src="../module_js/board.js"></script> -->
 <script type="text/javascript" src="../module_js/board.js"></script>
+<!-- <script type="text/javascript" src="../js/board.js"></script> -->
 
 
 <style>
@@ -59,11 +59,11 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th width="100px">NO</th>
-					<th width="500px">TITLE</th>
-					<th width="200px">WRITER</th>
-					<th width="150px">DATE</th>
-					<th width="50px">HIT</th>
+					<th width="10%">NO</th>
+					<th width="50%">TITLE</th>
+					<th width="15%">WRITER</th>
+					<th width="15%">DATE</th>
+					<th width="10%">HIT</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -75,7 +75,7 @@
 					</tr>
 					<% }else{%>
 					<%for(int i= 0; i < boardList.size(); i++){
-						String getDate = boardList.get(i).get("M_DATE").toString().substring(0, 16);
+						String getDate = boardList.get(i).get("M_DATE").toString().substring(5, 16);
 					%>
 					<tr style="text-align: left;">
 						<td><%=boardList.get(i).get("M_BOARDSEQ") %></td>
