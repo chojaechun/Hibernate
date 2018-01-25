@@ -45,4 +45,5 @@ public class HibernateUtil {
     public <T> T fetchById(Serializable id, Class<T> entityClass) {
         return (T)sessionFactory.getCurrentSession().get(entityClass, id);
     }   
+    
 }
