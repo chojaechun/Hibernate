@@ -7,9 +7,11 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
-		<config>src/main/webapp/WEB-INF/config/action-servlet.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/WebContent/WEB-INF/config/action-servlet.xml</config>
+		<config>src/main/resources/com/config/spring/context-datasource.xml</config>
+		<config>src/main/resources/com/config/spring/context-mapper.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
