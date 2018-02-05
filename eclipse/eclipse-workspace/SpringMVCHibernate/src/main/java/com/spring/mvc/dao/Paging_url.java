@@ -1,29 +1,29 @@
 package com.spring.mvc.dao;
 
-public class Paging {
+public class Paging_url {
 	private int startCount;
 	private int endCount;
 	private StringBuffer pagingHtml;
 
-	public Paging(int currentPage, int totalCount, int blockCount,
+	public Paging_url(int currentPage, int totalCount, int blockCount,
 			int blockPage, String pageUrl) {
 		this(null, null, currentPage, totalCount, blockCount, blockPage,
 				pageUrl, null);
 	}
 
-	public Paging(int currentPage, int totalCount, int blockCount,
+	public Paging_url(int currentPage, int totalCount, int blockCount,
 			int blockPage, String pageUrl, String addKey) {
 		this(null, null, currentPage, totalCount, blockCount, blockPage,
 				pageUrl, addKey);
 	}
 
-	public Paging(String keyField, String keyWord, int currentPage,
+	public Paging_url(String keyField, String keyWord, int currentPage,
 			int totalCount, int blockCount, int blockPage, String pageUrl) {
 		this(keyField, keyWord, currentPage, totalCount, blockCount, blockPage,
 				pageUrl, null);
 	}
 
-	public Paging(String keyField, String keyWord, int currentPage,
+	public Paging_url(String keyField, String keyWord, int currentPage,
 			int totalCount, int blockCount, int blockPage, String pageUrl,
 			String addKey) {
 		if (addKey == null) {
@@ -48,12 +48,12 @@ public class Paging {
 
 		if (currentPage > blockPage) {
 			if (keyWord == null) {
-				this.pagingHtml.append("<li><a href=javascript:pagingAjax('" + pageUrl + "?pageNum="
-						+ (startPage - 1) + addKey + ")>");
+				this.pagingHtml.append("<li><a href=" + pageUrl + "?pageNum="
+						+ (startPage - 1) + addKey + ">");
 			} else {
-				this.pagingHtml.append("<li><a href=javascript:pagingAjax('" + pageUrl + "?keyField="
+				this.pagingHtml.append("<li><a href=" + pageUrl + "?keyField="
 						+ keyField + "&keyWord=" + keyWord + "&pageNum="
-						+ (startPage - 1) + addKey + "#thirdContainer"+"') style='text-decoration: none;'>");
+						+ (startPage - 1) + addKey + "#thirdContainer"+" style='text-decoration: none;'>");
 			}
 			this.pagingHtml.append("<font size='2'>Prev</font>");
 			this.pagingHtml.append("</a></li>");
@@ -70,15 +70,15 @@ public class Paging {
 				this.pagingHtml.append("</font></b></a></li>");
 			} else {
 				if (keyWord == null) {
-					this.pagingHtml.append("<li><a href=javascript:pagingAjax('" + pageUrl
+					this.pagingHtml.append("<li><a href='" + pageUrl
 							+ "?pageNum=");
 				} else {
-					this.pagingHtml.append("<li><a href=javascript:pagingAjax('" + pageUrl
+					this.pagingHtml.append("<li><a href='" + pageUrl
 							+ "?keyField=" + keyField + "&keyWord=" + keyWord
 							+ "&pageNum=");
 				}
 				this.pagingHtml.append(i);
-				this.pagingHtml.append(addKey + "#thirdContainer') style='text-decoration: none;'>");
+				this.pagingHtml.append(addKey + "#thirdContainer'style='text-decoration: none;'>");
 				this.pagingHtml.append(i);
 				this.pagingHtml.append("</a></li>");
 			}
@@ -87,12 +87,12 @@ public class Paging {
 		//this.pagingHtml.append("&nbsp;&nbsp;&nbsp;&nbsp;");
 		if (totalPage - startPage >= blockPage) {
 			if (keyWord == null) {
-				this.pagingHtml.append("<li><a href=javascript:pagingAjax('" + pageUrl + "?pageNum="
-						+ (endPage + 1) + addKey + ")>");
+				this.pagingHtml.append("<li><a href=" + pageUrl + "?pageNum="
+						+ (endPage + 1) + addKey + ">");
 			} else {
-				this.pagingHtml.append("<li><a href=javascript:pagingAjax('" + pageUrl + "?keyField="
+				this.pagingHtml.append("<li><a href=" + pageUrl + "?keyField="
 						+ keyField + "&keyWord=" + keyWord + "&pageNum="
-						+ (endPage + 1) + addKey +"#thirdContainer"+"') style='text-decoration: none;'>");
+						+ (endPage + 1) + addKey +"#thirdContainer"+" style='text-decoration: none;'>");
 			}
 			this.pagingHtml.append("<font size='2'>Next</font>");
 			this.pagingHtml.append("</a></li>");

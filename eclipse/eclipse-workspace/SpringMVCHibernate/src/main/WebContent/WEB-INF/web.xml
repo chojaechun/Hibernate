@@ -24,6 +24,17 @@
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
+    
+    <!-- Web.xml 에서 관련 xml 을 전부 호출 하고 실행한다.
+    
+    	1. context-datarsource 를 호출 > 해당 context에서 db connection 및 db 관련된 정보를 호출한다.
+    		여기서 중요한것은 context-datasource에서 properties를 호출하게 되는데 
+    		properties를 web.xml에서 호출시 실행 순서에 있어 
+    		호출이 늦어지기 때문에 context-datasource에서 properties 미호출 에러가 발생한다.
+    		그러므로 context-datasource에서 호출하도록 하자. ( 정리하기도 편함 DB 관련 정보 관리 )
+    
+    	2. context-mapper는 Mysql db SQL 호출 관련
+     -->
 
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<!-- 해당 경로의 context를 전부 호출 -->

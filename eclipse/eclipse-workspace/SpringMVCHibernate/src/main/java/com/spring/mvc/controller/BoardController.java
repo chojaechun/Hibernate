@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -35,8 +38,11 @@ public class BoardController {
     public ModelAndView boardMain(Map<String,Object> commandMap, 
     		@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyField", defaultValue = "") String keyField,
-			@RequestParam(value = "keyWord", defaultValue = "") String keyWord) throws Exception{
+			@RequestParam(value = "keyWord", defaultValue = "ALL") String keyWord,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
         
+    	HttpSession session = request.getSession(true);
+
     	String pagingHtml = "";
     	
     	//ModelAndView mv = new ModelAndView("/board");

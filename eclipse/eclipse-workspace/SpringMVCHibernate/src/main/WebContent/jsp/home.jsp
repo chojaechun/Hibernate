@@ -8,8 +8,8 @@
 
 <script type="text/javascript" src="../assets/plugins/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="../assets/plugins/css/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../module_js/home.js"></script>
-<!-- <script type="text/javascript" src="../js/home.js"></script> -->
+<!-- <script type="text/javascript" src="../module_js/home.js"></script> -->
+<script type="text/javascript" src="../js/home.js"></script>
 <head>
 <meta charset="utf-8">
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
@@ -128,7 +128,7 @@ p {
 
 </head>
 <body>
- 	<div class="overlay" id="loading">
+ 	<div class="overlay" id="loading" style="background-color: black;">
 		<div class="loader"></div>
 	</div>
 	<!-- Navbar -->
@@ -146,21 +146,19 @@ p {
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
 			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
+			<div class="collapse navbar-collapse scrollMenu" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right" style="margin-right: 20px">
-					<li><a href="#mainContainer">ME</a></li>
-					<li><a href="#secondContainer">NOTE</a></li>
-					<li><a href="#thirdContainer">BOARD</a></li>
+					<li><a title="#mainContainer">ME</a></li>
+					<li><a title="#secondContainer">NOTE</a></li>
+					<li><a title="#thirdContainer">BOARD</a></li>
 					<li><a data-target="#loginModal" data-toggle="modal" href="#">LOGIN</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-
 	<!-- First Container -->
-	<div class="container-fluid text-center"
-		style="background-color: #EAEAEA; padding-top: 10%;"
-		id="mainContainer">
+	<div class="container-fluid text-center" style="background-color: #EAEAEA;" id="mainContainer">
+		<br><br><br>
 		<h3 class="margin">Main Title Page</h3>
 		<img src="../assets/img/bird.jpg"
 			class="img-responsive img-circle margin" style="display: inline"
@@ -170,11 +168,11 @@ p {
 			Server : AWS<br>Front : JSP, JAVA SCRIPT<br>Back : Spring
 			Framework MVC, Hibernate<br>DB : MY SQL
 		</h3>
+		<div id="secondContainer"></div>
 	</div>
 
 	<!-- Second Container -->
-	<div class="container-fluid bg-3 text-center" id="secondContainer"
-		style="padding-top: 10%">
+	<div class="container-fluid bg-3 text-center" >
 		<div id='default_layout_hidden' style="display: none;">
 			<div style="margin-right: 30px; float: right;" id='%SubID_1%'>
 				<a onclick="subPage('%ID_1%')" style="cursor: pointer;">%ID_2%</a>
@@ -191,11 +189,11 @@ p {
 			</div>
 	  <%} %>
 		</section>
+		<div id="thirdContainer"></div>
 	</div>
 
 	<!-- Third Container (Grid) -->
-	<div class="container-fluid bg-2 text-center" id="thirdContainer"
-		style="padding-top: 10%">
+	<div class="container-fluid bg-2 text-center" id="thirdContainer">
 		<div style="width: 80%; margin: auto">
 			<jsp:include page="/jsp/board.jsp" flush="true" />
 		</div>
@@ -206,9 +204,6 @@ p {
 			Made By <a href="http://www.developerjo.net/">www.developerjo.net</a>
 		</p>
 	</footer>
-
-	<%-- <jsp:include page="../jsp/modalList.jsp" flush="true" /> --%>
-
 
 	<div class="modal fade" id="loginModal" role="dialog">
 		<div class="modal-content"
